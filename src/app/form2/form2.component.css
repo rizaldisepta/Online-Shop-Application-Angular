@@ -1,0 +1,60 @@
+.container {
+	border: 1px solid #ddd;
+	border-radius: 0.5em;
+    padding: 10px;    
+}
+table {
+    border-collapse: collapse;
+}
+table,th,td {
+   border: 1px solid #ccc;
+}
+.no-border, .no-border th, .no-border tr td {
+   border: none;
+   padding: 5px;
+}
+
+.no-border-main, .no-border-main th {
+   border: none;
+   padding: 10px;
+}
+
+.no-border-main td {
+	padding: 5px;
+}
+
+ul {
+    list-style-type:none;
+    margin:0 0 2em 0;
+    padding:0;
+}
+ul li {
+    display:inline;
+    margin-right: 30px;
+}
+ul li a {
+    font-size: 1.5em;
+}
+a {
+    color:#777;
+    text-decoration:none;
+}
+
+button {
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid darkblue;
+    border-radius: 0.7em;
+    color: darkblue;
+    padding: 5px;
+}
+button:hover{	
+    background: darkblue;
+    color: #fff;
+}
+button:disabled{
+	background-color: #555;
+    border: 1px solid #555;
+    color: #ddd;
+    cursor: none;
+}

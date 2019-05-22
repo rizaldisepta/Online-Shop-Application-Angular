@@ -1,0 +1,49 @@
+<p>
+ <!-- Ke 1
+
+  <tr>
+      <td>Nama</td>
+      <td>:</td>
+      <td><input  class="form-control" type="text" [(ngModel)]="model.nama" placeholder="Tanggal" /></td>
+    </tr>
+    <tr>
+      <td>Alamat</td>
+      <td>:</td>
+      <td><input  class="form-control" type="text" [(ngModel)]="model.alamat" placeholder="total" /></td>
+    </tr>
+    <tr>
+      <td>No</td>
+      <td>:</td>
+      <td><input  class="form-control" type="text" [(ngModel)]="model.no" placeholder="Disc" /></td>
+    </tr>
+    <br>
+Ke 2 -->
+
+    <!-- <tr>
+        <td>Nama</td>
+        <td>:</td>
+        <td><input  class="form-control" type="text" [(ngModel)]="models.nama" placeholder="Tanggal" /></td>
+      </tr>
+      <tr>
+        <td>Alamat</td>
+        <td>:</td>
+        <td><input  class="form-control" type="text" [(ngModel)]="models.alamat" placeholder="total" /></td>
+      </tr>
+      <tr>
+        <td>No</td>
+        <td>:</td>
+        <td><input  class="form-control" type="text" [(ngModel)]="models.no" placeholder="Disc" /></td>
+      </tr> -->
+  <button (click)="btnclick()"></button>
+
+  Ke 3
+  
+    <tr *ngFor="let d of labelmodel;let i=index;">
+        <td>{{d.label}}</td>
+        <td>:</td>
+        <td><input  class="form-control" type="d.type" [(ngModel)]="d.value"  /></td>
+      </tr>
+    
+  <button (click)="btnclick()"></button>
+
+</p>

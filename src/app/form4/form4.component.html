@@ -1,0 +1,57 @@
+<div class="container" >
+
+	<div class="container" style="border:none;">
+		<button class="btn" style="background-color:transparent"  (click)="getAllCustomer()" ><span class="glyphicon glyphicon-refresh"></span></button>
+    <button class="btn btn-success" (click)="doSave()">SAVE</button>
+    <button class="btn btn-primary" (click)="doNewCustomer()">ADD</button>
+	
+		<button class="btn btn-danger" (click)="doCancel()" *ngIf="mode!=1">CANCEL</button>
+	</div>
+ 
+  
+  <br>
+  <p-dropdown [options]="customertypedata" [(ngModel)]="selectedcustomertype" optionLabel="name"></p-dropdown>
+  {{selectedcustomertype|json}}
+
+	<div>
+	  	<table class="table table-hover">
+        <th>#</th><th>NO CUSTOMER</th><th>CUSTOMER TYPE ID</th><th>NAMA CUSTOMER</th><th>ALAMAT</th><th>TELEPON</th>
+        <th>KOTA</th><th>TOTAL HUTANG</th><th>TOTAL BAYAR</th><th>ACTIVE</th><th>ACTION</th>
+	  			<tr *ngFor="let f of dataCustomer;let i=index;" [ngStyle]="{'background-color': selectedId==i?'aqua':'white'}">
+	    			<td>{{i+1}}</td>
+	    			<td>{{f.no}}</td>
+            <p-dropdown readonly="true"[options]="customertypedata" [(ngModel)]="f.customerTypeId" ></p-dropdown>
+            <td>{{f.nama}}</td>
+            <td>{{f.alamat}}</td>
+            <td>{{f.telp}}</td>
+            <td>{{f.kota}}</td>
+            <td>{{f.totalHutang}}</td>
+            <td>{{f.totalBayar}}</td>
+            <td>{{f.active}}</td>
+	    			<td>
+              
+	    				<button  class="btn" style="background-color:transparent"  (click)="doEditCustomer(i)"><span class="glyphicon glyphicon-edit"></span></button>
+	    				<button class="btn" style="background-color:transparent"  (click)="doDeleteCustomer(i)"><span class="glyphicon glyphicon-trash"></span></button>
+	    			</td>
+	  			</tr>
+	  	</table>
+	  	<br>
+	  	<div *ngIf="mode==2">
+        <pre>{{data.model|json}}</pre>
+    
+        <table class="no-border" >
+          <tr><td>No</td><td>:</td><td><input class="form-control" type="text" [(ngModel)]="data.model.no" placeholder="No Customer" /></td></tr>
+         <!-- <p-dropdown (onChange)="selectedcustomertypechange($event)" [options]="customertypedata" dataKey="id" [(ngModel)]="selectedcustomertype" optionLabel="name"></p-dropdown> -->
+          <p-dropdown  [options]="customertypedata" [(ngModel)]="data.model.customerTypeId" optionLabel="name"></p-dropdown>
+          <tr><td>Nama Customer</td><td>:</td><td><input class="form-control" type="text" [(ngModel)]="data.model.nama" placeholder="nama" /></td></tr>
+          <tr><td>Alamat</td><td>:</td><td><input class="form-control" type="text" [(ngModel)]="data.model.alamat" placeholder="alamat" /></td></tr>
+          <tr><td>Telepon</td><td>:</td><td><input class="form-control" type="text" [(ngModel)]="data.model.telp" placeholder="Telepon" /></td></tr>
+          <tr><td>Kota</td><td>:</td><td><input class="form-control" type="text" [(ngModel)]="data.model.kota" placeholder="kota" /></td></tr>
+          <tr><td>Total Hutang</td><td>:</td><td><input class="form-control" type="number" [(ngModel)]="data.model.totalHutang" placeholder="totalHutang" /></td></tr>
+          <tr><td>Total Bayar</td><td>:</td><td><input class="form-control" type="number" [(ngModel)]="data.model.totalBayar" placeholder="totalBayar" /></td></tr>
+          <tr><td>Active</td><td>:</td><td><input class="form-control" type="number" [(ngModel)]="data.model.active" placeholder="active" /></td></tr>
+        </table>
+	  
+
+
+</div>

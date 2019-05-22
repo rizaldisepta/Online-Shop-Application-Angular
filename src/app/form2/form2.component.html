@@ -1,0 +1,71 @@
+<div class="container" >
+
+	<div class="container" style="border:none;">
+		<button (click)="getAllFaktur()" *ngIf="mode==1">REFRESH</button>
+		<button (click)="doNewFaktur()" *ngIf="mode==1">NEW FAKTUR</button>
+		<button (click)="doSave()" >SAVE</button>
+		<button (click)="doCancel()" *ngIf="mode!=1">CANCEL</button>
+	</div>
+
+	<div *ngIf="mode==1">
+	  	<table class="no-border-main">
+	    	<th>#</th><th>NO FAKTUR</th><th>TGL FAKTUR</th><th>NAMA CUSTOMER</th>
+	  			<tr *ngFor="let f of dataFaktur;let i=index;" [ngStyle]="{'background-color': selectedId==i?'aqua':'white'}">
+	    			<td>{{i+1}}</td>
+	    			<td>{{f.noFak}}</td>
+	    			<td>{{f.tglFak}}</td>
+	    			<td>{{f.custName}}</td>
+	    			<td>
+	    				<button (click)="showDetail(i)">{{captionShowHideDetail}}</button>
+	    				<button (click)="doEditFaktur(i)">EDIT</button>
+	    				<button (click)="doDeleteFaktur(i)">DELETE</button>
+	    			</td>
+	  			</tr>
+	  	</table>
+	  	<br>
+	  	
+	  	<div *ngIf="isShowDetail">
+	  		{{ "DETAIL FAKTUR NO: " + noFak }}
+			<table class="no-border-main">
+				<th>#</th><th>NAMA BRG</th><th>QTY</th><th>HARGA</th>
+				<tr *ngFor="let d of dataFakturDetail;let j=index;" [ngStyle]="{'background-color': aqua}">
+			  		<td>{{j+1}}</td>
+			  		<td>{{d.prodName}}</td>
+			  		<td>{{d.qty}}</td>
+			  		<td>{{d.price}}</td>
+				</tr>
+		  	</table>
+		</div>
+	</div>
+
+	<div *ngIf="mode!=1">
+		<pre>{{data.model|json}}</pre>
+		<pre>{{data.modelDet|json}}</pre>
+		<pre>{{modelDet|json}}</pre>
+		<table class="no-border">
+			<tr><td>No Faktur</td><td>:</td><td><input type="text" [(ngModel)]="data.model.noFak" placeholder="No Faktur..." /></td></tr>
+			<tr><td>Tgl Faktur</td><td>:</td><td><input type="date" [(ngModel)]="data.model.tglFak" /></td></tr>
+			<tr><td>Nama Customer</td><td>:</td><td><input type="text" [(ngModel)]="data.model.custName" placeholder="Nama Customer..." /></td></tr>
+		</table>
+		<p>DETAIL FAKTUR</p>
+		<table>				
+			<tr>
+				<td><button (click)="doNewDetail()">ADD NEW DETAIL</button></td>
+				<td>
+					<table class="no-border">
+						<th>NO</th><th>NAMA BRG</th><th>QTY</th><th>HARGA</th>
+						<tr *ngFor="let d of data.modelDet;let i=index;">
+							<td>{{i+1}}</td>
+							<td><input type="text" [(ngModel)]="d.prodName" /></td>
+							<td><input type="number" [(ngModel)]="d.qty" /></td>
+							<td><input type="number" [(ngModel)]="d.price" /></td>
+							<td><button (click)="doDeleteDetail(i)">DELETE</button></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
+</div>

@@ -1,0 +1,141 @@
+<div class="container">
+
+  <div class="container" style="border:none;">
+    <button class="btn" style="background-color:transparent" (click)="getAllSalesM()"><span class="glyphicon glyphicon-refresh"></span></button>
+    <button class="btn btn-success" (click)="doSave()" [disabled]="frmfaktur.invalid"><span class="glyphicon glyphicon-save"></span>
+      SAVE</button>
+    <button *ngIf="mode==1" class="btn btn-primary" (click)="doNewSalesM()"><span class="glyphicon glyphicon-plus"></span>ADD</button>
+
+    <button class="btn btn-danger" (click)="doCancel()" *ngIf="mode!=1">CANCEL</button>
+  </div>
+
+  <br>
+
+  <div *ngIf="mode==1">
+    <table class="table table-hover">
+      <th>#</th>
+      <th>No Faktur</th>
+      <th>Customer Id</th>
+      <th>tgl</th>
+      <th>total</th>
+      <th>disc</th>
+      <th>ACTION</th>
+      <tr *ngFor="let f of dataSales;let i=index;" [ngStyle]="{'background-color': selectedId==i?'#CCFF66':'white'}">
+        <td>{{i+1}}</td>
+        <td>{{f.nofak}}</td>
+        <p-dropdown class="form-control" readonly="true" [options]="customerdata" [(ngModel)]="f.customerId"></p-dropdown>
+
+        <td>{{f.tgl}}</td>
+        <td>{{f.total}}</td>
+        <td>{{f.disc}}</td>
+
+        <td>
+          <button class="btn btn-secondary" (click)="showDetail(i)">{{captionShowHideDetail}}</button>
+          <button class="btn" style="background-color:transparent" (click)="doEditSales(i)"><span class="glyphicon glyphicon-edit"></span></button>
+          <button class="btn" style="background-color:transparent" (click)="doDeleteSales(i)"><span class="glyphicon glyphicon-trash"></span></button>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <div *ngIf="isShowDetail">
+      {{ "DETAIL FAKTUR NO: " + noFak }}
+      <table class="table">
+        <th>#</th>
+        <th>Sales MID</th>
+        <th>Product Id</th>
+        <th>Qty</th>
+        <th>Product productUnitId</th>
+        <th>Unit Price</th>
+        <th>Sub Total</th>
+        <tr *ngFor="let d of salesdetail;let j=index;" [ngStyle]="{'background-color': aqua}">
+          <td>{{j+1}}</td>
+          <td>{{d.salesMId}}</td>
+          <td>{{d.productId}}</td>
+          <td>{{d.qty}}</td>
+          <td>{{d.productUnitId}}</td>
+          <td>{{d.unitPrice}}</td>
+          <td>{{d.subtotal}}</td>
+        </tr>
+      </table>
+
+      <br>
+    </div>
+  </div>
+  <form #frmfaktur="ngForm">
+    <div *ngIf="mode!=1">
+      <pre>{{data.model|json}}</pre>
+      <pre>{{data.modelDet|json}}</pre>
+      <pre>{{modelDet|json}}</pre>
+      <pre>{{frmfaktur|json}}</pre>
+      <table class="no-border">
+        <tr>
+          <td>No Faktur</td>
+          <td>:</td>
+          <td><input #nofak="ngModel" maxlength="8" name="nofak" required class="form-control" type="text" [(ngModel)]="data.model.nofak"
+              placeholder="No Faktur" /></td>
+        </tr>
+
+        <div *ngIf="nofak.invalid" class="alert alert-danger">
+            harus diisi!
+        </div>
+
+        <!-- <p-dropdown (onChange)="selectedcustomertypechange($event)" [options]="customertypedata" dataKey="id" [(ngModel)]="selectedcustomertype" optionLabel="name"></p-dropdown> -->
+        <tr>
+          <td>Nama Customer</td>
+          <td>:</td>
+          <td>
+            <p-dropdown name="customerId" [options]="customerdata" [(ngModel)]="data.model.customerId">Nama Customer</p-dropdown>
+          </td>
+        </tr>
+        <tr>
+          <td>Tanggal</td>
+          <td>:</td>
+          <td><input name="tanggal" class="form-control" type="date" [(ngModel)]="data.model.tgl" placeholder="Tanggal" /></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>:</td>
+          <td><input name="total" class="form-control" type="number" [(ngModel)]="data.model.total" placeholder="total" /></td>
+        </tr>
+        <tr>
+          <td>Diskon</td>
+          <td>:</td>
+          <td><input name="disc" class="form-control" type="number" [(ngModel)]="data.model.disc" placeholder="Disc" /></td>
+        </tr>
+
+
+      </table>
+
+      <br>
+      <h3>DETAIL FAKTUR</h3>
+
+      <table>
+        <tr>
+          <td><button class="btn btn-primary" (click)="doNewDetail()">NEW DETAIL</button></td>
+          <td>
+
+            &nbsp;
+            <table class="table">
+          <th>NO</th>
+          <th>Product Id</th>
+          <th>QTY</th>
+          <th>Product Unit Id</th>
+          <th>unitPrice</th>
+          <th>Sub Total</th>
+        <tr *ngFor="let d of data.modelDet;let i=index;">
+          <td>{{i+1}}</td>
+
+          <td><input name="productId" class="form-control" type="number" [(ngModel)]="d.productId" /></td>
+          <td><input name="qty" class="form-control" type="number" [(ngModel)]="d.qty" /></td>
+          <td><input name="productUnitId" class="form-control" type="number" [(ngModel)]="d.productUnitId" /></td>
+          <td><input name="unitPrice" class="form-control" type="number" [(ngModel)]="d.unitPrice" /></td>
+          <td><input name="subtotal" class="form-control" type="number" [(ngModel)]="d.subtotal" /></td>
+          <td><button class="btn btn-danger" (click)="doDeleteDetail(i)">DELETE</button></td>
+        </tr>
+      </table>
+      </td>
+      </tr>
+      </table>
+    </div>
+  </form>
+</div>

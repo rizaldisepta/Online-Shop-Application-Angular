@@ -1,0 +1,126 @@
+{
+  "faktur": [
+    {
+      "id": 2,
+      "noFak": "000002",
+      "tglFak": "2018-11-11",
+      "custName": "Cynthiasdfdsf",
+      "total": 0
+    },
+    {
+      "id": 5,
+      "noFak": "000005",
+      "tglFak": "2018-11-12",
+      "custName": "Hilal",
+      "total": 0
+    },
+    {
+      "id": 8,
+      "noFak": "000008",
+      "tglFak": "2018-11-13",
+      "custName": "Cynthia",
+      "total": 0
+    },
+    {
+      "noFak": "00009",
+      "tglFak": "2018-11-12",
+      "custName": "kjhrferf",
+      "id": 9
+    },
+    {
+      "noFak": "hkghjg",
+      "tglFak": "2018-11-13",
+      "custName": "ghjsgdfshdgf",
+      "id": 10
+    },
+    {
+      "noFak": "ukhkh",
+      "tglFak": "0678-06-07",
+      "custName": "9uoyu",
+      "id": 11
+    },
+    {
+      "noFak": "sdfds",
+      "tglFak": "3242-03-24",
+      "custName": "AAAAA",
+      "id": 12
+    },
+    {
+      "noFak": "23",
+      "tglFak": "2018-11-28",
+      "custName": "23",
+      "id": 13
+    },
+    {
+      "noFak": "1",
+      "tglFak": "0001-01-01",
+      "custName": "1",
+      "id": 14
+    }
+  ],
+  "faktur_detail": [
+    {
+      "id": 9,
+      "fakturId": 5,
+      "prodName": "minyak",
+      "qty": 17,
+      "price": 100
+    },
+    {
+      "id": 18,
+      "fakturId": 9,
+      "prodName": "AAAA",
+      "qty": 2342,
+      "price": 234
+    },
+    {
+      "id": 20,
+      "fakturId": 10,
+      "prodName": "bers",
+      "qty": 2342,
+      "price": 234
+    },
+    {
+      "prodName": "afdsf",
+      "qty": 34555,
+      "price": 234324,
+      "fakturId": 2,
+      "id": 23
+    },
+    {
+      "prodName": "qwqe",
+      "qty": 324,
+      "price": 4543,
+      "fakturId": 2,
+      "id": 24
+    },
+    {
+      "prodName": "dsfsd",
+      "qty": 8789,
+      "price": 89789789,
+      "fakturId": 12,
+      "id": 25
+    },
+    {
+      "prodName": "SDF",
+      "qty": 324,
+      "price": 234,
+      "fakturId": 12,
+      "id": 26
+    },
+    {
+      "prodName": "1",
+      "price": 2,
+      "qty": 1,
+      "fakturId": 13,
+      "id": 27
+    },
+    {
+      "prodName": "1",
+      "qty": 1,
+      "price": 1,
+      "fakturId": 14,
+      "id": 28
+    }
+  ]
+}
